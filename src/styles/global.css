@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+body {
+  background-color: black;
+  font-family: 'Rubik', sans-serif;
+}
+
+.note-app__container--center {
+  width: 1000px;
+  margin: auto;
+}
+
+.note-app__header {
+  padding: 40px 0 20px 0;
+}
+
+.note-app__navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navigation-bar__search-input {
+  background-color: #212121;
+  width: 215px;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+}
+
+.navigation-bar__search-input:focus-visible {
+  outline: 1px solid #0078E7;
+}
+
+.navigation-bar__new-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn {
+  width: 215px;
+  height: 37px;
+  border-radius: 10px;
+  background-color: #212121;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #141414;
+}
+
+.note-list {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.note-item__card {
+  background-color: #212121;
+  width: 320px;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-item__card p {
+  font-weight: lighter;
+}
+
+.note-item__card h4 {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.note-item__content {
+  margin: 20px 0;
+  line-height: 1.7;
+}
+
+.note-item__action {
+  margin-top: auto;
+  align-self: flex-end;
+  
+}
+
+.action__delete, .action__archive {
+  padding: 5px 10px;
+  border-radius: 7px;
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+  color: white
+}
+
+.action__delete {
+  background-color: rgb(219, 25, 25);
+}
+
+.action__archive {
+  background-color: #0078E7;
+}
+
+.action__delete:hover {
+  background-color: rgb(185, 8, 8);
+}
+
+.action__archive:hover {
+  background-color: #0259ac;
+}
+
+.overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-new-note__card{
+  background-color: #000000;
+  padding: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.form-new-note__input-title{
+  background-color: #212121;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+}
+
+.form-new-note__input-title:focus-visible, .form-new-note__card textarea:focus-visible {
+  outline: 1px solid #0078E7;
+}
+
+.form-new-note__card textarea{
+  resize: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #212121;
+  border: none;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+}
