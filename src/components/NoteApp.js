@@ -1,5 +1,6 @@
 import React from 'react'
 import { getInitialData, showFormattedDate } from '../utils/data'
+import Footer from './Footer';
 import FormNewNote from './FormNewNote';
 import Header from './Header';
 import NavigationBar from './NavigationBar';
@@ -12,6 +13,7 @@ class NoteApp extends React.Component {
       notes: getInitialData(),
       showArchive: false,
       onAddNewNote: false,
+      searchKeyword: '',
     }
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -19,6 +21,7 @@ class NoteApp extends React.Component {
     this.toggleShowArchive = this.toggleShowArchive.bind(this);
     this.toggleAddNewNote = this.toggleAddNewNote.bind(this);
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+    this.onSearchHandler = this.onSearchHandler.bind(this);
   }
 
   onDeleteHandler(id) {
@@ -29,7 +32,6 @@ class NoteApp extends React.Component {
   toggleShowArchive() {
     const newState = !(this.state.showArchive);
     this.setState({showArchive: newState});
-    console.log(this.state);
   }
 
   toggleArchiveItem(id) {  
@@ -64,6 +66,10 @@ class NoteApp extends React.Component {
     })
   }
 
+  onSearchHandler(keyword) {
+    this.setState({searchKeyword: keyword});
+  }
+
   render(){
     let modalNewNote = null;
     if(this.state.onAddNewNote){
@@ -78,14 +84,16 @@ class NoteApp extends React.Component {
           toggleShowArchive={this.toggleShowArchive} 
           showArchiveState={this.state.showArchive}
           toggleAddNewNote={this.toggleAddNewNote}
+          onSearchHandler={this.onSearchHandler}
         />
-        
         <NoteList 
           notes={this.state.notes} 
           onDelete={this.onDeleteHandler} 
           toggleArchive={this.toggleArchiveItem}
           showArchiveState={this.state.showArchive}
+          searchKeyword={this.state.searchKeyword}
         />
+        <Footer/>
       </div>
     );
   }

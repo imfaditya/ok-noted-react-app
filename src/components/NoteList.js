@@ -1,24 +1,46 @@
 import React from "react";
 import NoteItem from "./NoteItem";
+import emptyData from '../images/empty-box.svg'
 
-function NoteList ({notes, onDelete, toggleArchive, showArchiveState}) {
+function NoteList ({notes, onDelete, toggleArchive, showArchiveState, searchKeyword}) {
   let filteredNote;
+  let title;
 
-  if(showArchiveState){
+  if(showArchiveState) {
     filteredNote = notes.filter((note) => note.archived === true);
+    title = (<h1 className="note-list__title">Archived Notes</h1>);
   } else if (!showArchiveState) {
     filteredNote = notes.filter((note) => note.archived === false);
+    title = (<h1 className="note-list__title">Active Notes</h1>)
   }
 
-  return (
-    <div className="note-list">
-      {
-        filteredNote.map((note) => {
-          return (<NoteItem key={note.id} {...note} onDelete={onDelete} toggleArchive={toggleArchive} archiveStatus={note.archived}/>)
-        })
+  if(searchKeyword.length) {
+    filteredNote = filteredNote.filter((note) => {
+      if((note.title.toLowerCase()).includes(searchKeyword.toLowerCase())){
+        return note;
       }
-    </div>
-  )
+    });
+  }
+  
+  if(filteredNote.length) {
+    return (
+      <div className="note-list">
+        {title}
+        {
+          filteredNote.map((note) => {
+            return (<NoteItem key={note.id} {...note} onDelete={onDelete} toggleArchive={toggleArchive} archiveStatus={note.archived}/>)
+          })
+        }
+      </div>
+    )
+  } else {
+    return (
+      <div className="note-list">
+        {title}
+        <img className="image-empty" src={emptyData} alt="empty-data"/>
+      </div>
+    )
+  }
 }
 
 export default NoteList;
