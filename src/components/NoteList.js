@@ -15,11 +15,7 @@ function NoteList ({notes, onDelete, toggleArchive, showArchiveState, searchKeyw
   }
 
   if(searchKeyword.length) {
-    filteredNote = filteredNote.filter((note) => {
-      if((note.title.toLowerCase()).includes(searchKeyword.toLowerCase())){
-        return note;
-      }
-    });
+    filteredNote = filteredNote.filter((note) => (note.title.toLowerCase()).includes(searchKeyword.toLowerCase()));
   }
   
   if(filteredNote.length) {

@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer () {
   return (
-    <p className="footer-text">Made With ❤️ For Dicoding Submission</p>
+    <p className="footer-text">Made With Love For Dicoding Submission</p>
   );
 }
 
